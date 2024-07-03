@@ -368,6 +368,16 @@ class MassSpectrumAnalyzer:
     def tolérance_paire(self, val):
         """
         Cette fonction assure que la valeur de la tolérance est un nombre pair
+
+        INPUT
+        
+        self : la classe d'analyse de spectre et ses variables
+        val : entier
+
+        OUTPUT
+
+        -
+        
         """
         if int(val) % 2 != 0:
             self.tolerance_var.set(int(val) // 2 * 2)
@@ -375,6 +385,17 @@ class MassSpectrumAnalyzer:
             self.tolerance_var.set(val)
             
     def charger_CSV(self):
+        """
+        Cette fonction permet d'ouvrir le fichier csv à analyser à partir d'un explorateur de fichier
+        INPUT
+
+        self : la classe d'analyse de spectre et ses variables
+
+        OUTPUT :
+        
+        self.dfOriginal : le dataframe correspondant au fichier ouvert
+        
+        """
         file_path = filedialog.askopenfilename()
         if file_path:
             self.dfOriginal = pd.read_csv(file_path,index_col=False, usecols=["Center X", "Height", "Z"])
@@ -383,6 +404,28 @@ class MassSpectrumAnalyzer:
         
         """
         Cette fonction permet d'obtenir la masse monoisotopique d'un polymère donné
+        INPUT
+        
+        C1 : nombre de carbone dans les bouts de chaînes
+        H1 : nombre d'hydrogènes dans les bouts de chaînes
+        O1 : nombre d'oxygène dans les bouts de chaînes
+        N1 : nombre d'azote dans les bouts de chaînes
+        S1 : nombre de soufre dans les bouts de chaînes
+        
+        C2 : nombre de carbone dans l'unité répetitrice
+        H2 : nombre d'hydrogènes dans l'unité répetitrice
+        O2 : nombre d'oxygène dans l'unité répetitrice
+        N2 : nombre d'azote dans l'unité répetitrice
+        S2 : nombre de soufre dans l'unité répetitrice
+        
+        LDC : longeur de chaîne maximale observable
+        
+        Adduit : type d'adduit formé
+        
+        OUTPUT
+        
+        PolymereFormula.monoisotopic_mass : la masse monoisotopique correspondant à la chaîne polymère d'entrée
+        
         """
         
         Polymere = ""
