@@ -44,6 +44,7 @@ class MassSpectrumAnalyzer:
         self.image_label1.pack(side = 'right', pady=10, anchor ='nw')
         
         #Frame pour les bouts de chaînes
+        #Frame pour les bouts de chaînes
         
         BDC = tk.LabelFrame(self.left_frame, text="Bouts de chaînes", padx=5, pady=5)
         BDC.pack(side ='top',fill='y', pady=10)
