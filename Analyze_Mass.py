@@ -9,6 +9,9 @@ from molmass import Formula
 import matplotlib as mpl
 from tkinter import ttk
 
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams['font.size'] = '24'
+
 class MassSpectrumAnalyzer:
     def __init__(self,root):
         
@@ -16,7 +19,7 @@ class MassSpectrumAnalyzer:
         
         self.root = root
         root.title('Mass spectrum analyzer V 0.5')
-        root.iconbitmap("Icon.ico")
+        # root.iconbitmap("Icon.ico")
         root.geometry(f"{root.winfo_screenwidth()}x{root.winfo_screenheight()}")
         root.config(bg="#EBECF0")
         
@@ -33,15 +36,15 @@ class MassSpectrumAnalyzer:
         
         #Affichage des logos
         
-        self.image_path = "logoUMET.png"  
-        self.image = tk.PhotoImage(file=self.image_path)
-        self.image_label = tk.Label(self.left_frame, image=self.image, bg='white')
-        self.image_label.pack(side = 'left', pady=10, anchor ='ne')
+        # self.image_path = "logoUMET.png"  
+        # self.image = tk.PhotoImage(file=self.image_path)
+        # self.image_label = tk.Label(self.left_frame, image=self.image, bg='white')
+        # self.image_label.pack(side = 'left', pady=10, anchor ='ne')
         
-        self.image_path1 = "logoUnivLille.png"
-        self.image1 = tk.PhotoImage(file=self.image_path1)
-        self.image_label1 = tk.Label(self.left_frame,image=self.image1, bg='white')
-        self.image_label1.pack(side = 'right', pady=10, anchor ='nw')
+        # self.image_path1 = "logoUnivLille.png"
+        # self.image1 = tk.PhotoImage(file=self.image_path1)
+        # self.image_label1 = tk.Label(self.left_frame,image=self.image1, bg='white')
+        # self.image_label1.pack(side = 'right', pady=10, anchor ='nw')
         
         #Frame pour les bouts de chaînes
         #Frame pour les bouts de chaînes
@@ -937,7 +940,7 @@ class MassSpectrumAnalyzer:
                         affichage_charge10_y.append(charge10['Isotopes'].iloc[i][j][1])
                 markerline, stemlines, baseline = self.ax1.stem(affichage_charge10_x, affichage_charge10_y, markerfmt='',basefmt='white',linefmt=color[0][8])
                 legend_mz.append(BDC[0] + " z=10")
-            self.ax1.set_xlabel("m/z", fontsize = 18)
+            self.ax1.set_xlabel("m/z")
             
         if Nbre_BDC>=2:
             
@@ -1055,13 +1058,13 @@ class MassSpectrumAnalyzer:
                         affichage_charge10_y2.append(charge10['Isotopes'].iloc[i][j][1])
                 markerline, stemlines, baseline = self.ax1.stem(affichage_charge10_x2, affichage_charge10_y2, markerfmt='',basefmt='white',linefmt=color[1][9])
                 legend_mz.append(BDC[1] + " z=10")
-            self.ax1.set_xlabel("m/z", fontsize = 18) 
+            self.ax1.set_xlabel("m/z") 
            
-        self.ax1.legend(legend_mz, ncols=round(2,0),fontsize=18,loc='upper right')
+        self.ax1.legend(legend_mz, ncols=round(2,0),loc='upper right')
         self.ax1.set_ylabel("Counts (-)")
-        plt.legend(legend_mz, ncols=round(2,0),fontsize=18,loc='upper right')
-        plt.ylabel("Counts (-)", fontsize = 18)
-        plt.xlabel("m/z", fontsize = 18)
+        plt.legend(legend_mz, ncols=round(2,0),loc='upper right')
+        plt.ylabel("Counts (-)")
+        plt.xlabel("m/z")
         Resultats_Mn_Mw_D_text =""
         
         for k in range(Nbre_BDC):
@@ -1101,11 +1104,11 @@ class MassSpectrumAnalyzer:
             text_temp = BDC_text + Mn + Mw + D
             Resultats_Mn_Mw_D_text += text_temp
             
-        self.ax3.legend(legend, fontsize = 18, loc='upper right')
-        self.ax3.set_xlabel("Masse (Da)", fontsize = 18)
-        self.ax3.set_ylabel("Counts (-)", fontsize = 18) 
+        self.ax3.legend(legend, loc='upper right')
+        self.ax3.set_xlabel("Masse (Da)")
+        self.ax3.set_ylabel("Counts (-)") 
         self.canvas.draw()
-        self.fig.suptitle(Resultats_Mn_Mw_D_text, fontsize=18)
+        self.fig.suptitle(Resultats_Mn_Mw_D_text)
         
         pt = Table(self.DFR,dataframe=Resultat,showtoolbar=True, showstatusbar=True)
         pt.show()
@@ -1114,3 +1117,4 @@ if __name__ == '__main__':
     root = tk.Tk()
     app = MassSpectrumAnalyzer(root)
     root.mainloop()
+
