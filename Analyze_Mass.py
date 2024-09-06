@@ -19,7 +19,7 @@ class MassSpectrumAnalyzer:
         
         self.root = root
         root.title('Mass spectrum analyzer V 0.5')
-        # root.iconbitmap("Icon.ico")
+        root.iconbitmap("Icon.ico")
         root.geometry(f"{root.winfo_screenwidth()}x{root.winfo_screenheight()}")
         root.config(bg="#EBECF0")
         
@@ -36,17 +36,16 @@ class MassSpectrumAnalyzer:
         
         #Affichage des logos
         
-        # self.image_path = "logoUMET.png"  
-        # self.image = tk.PhotoImage(file=self.image_path)
-        # self.image_label = tk.Label(self.left_frame, image=self.image, bg='white')
-        # self.image_label.pack(side = 'left', pady=10, anchor ='ne')
+        self.image_path = "logoUMET.png"  
+        self.image = tk.PhotoImage(file=self.image_path)
+        self.image_label = tk.Label(self.left_frame, image=self.image, bg='white')
+        self.image_label.pack(side = 'left', pady=10, anchor ='ne')
         
-        # self.image_path1 = "logoUnivLille.png"
-        # self.image1 = tk.PhotoImage(file=self.image_path1)
-        # self.image_label1 = tk.Label(self.left_frame,image=self.image1, bg='white')
-        # self.image_label1.pack(side = 'right', pady=10, anchor ='nw')
+        self.image_path1 = "logoUnivLille.png"
+        self.image1 = tk.PhotoImage(file=self.image_path1)
+        self.image_label1 = tk.Label(self.left_frame,image=self.image1, bg='white')
+        self.image_label1.pack(side = 'right', pady=10, anchor ='nw')
         
-        #Frame pour les bouts de chaînes
         #Frame pour les bouts de chaînes
         
         BDC = tk.LabelFrame(self.left_frame, text="Bouts de chaînes", padx=5, pady=5)
